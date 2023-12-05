@@ -7,9 +7,6 @@ public class Gameplay extends JPanel implements KeyListener {
 
     public Gameplay() {
         paddle = new Paddle(300, 480, 100, 8, 5);
-        addKeyListener(this);
-        setFocusable(true);
-        setFocusTraversalKeysEnabled(false);
     }
 
     @Override
