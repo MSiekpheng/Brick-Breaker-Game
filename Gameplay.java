@@ -32,9 +32,7 @@ public class Gameplay extends JPanel implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // Implement the keyReleased method as required by the KeyListener interface
-        // This method can be left empty if you don't need any functionality on key
-        // release
+
     }
 
     // Main method for testing
