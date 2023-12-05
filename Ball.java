@@ -30,6 +30,4 @@ public class Ball extends GameObject {
     public void setSpeedY(int speedY) {
         this.speedY = speedY;
     }
-
-    // Other methods related to Ball...
 }

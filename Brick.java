@@ -20,6 +20,4 @@ public class Brick extends GameObject {
     public void setDestroyed(boolean destroyed) {
         this.destroyed = destroyed;
     }
-
-    // Other methods related to Brick...
 }
