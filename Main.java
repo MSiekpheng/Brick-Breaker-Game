@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) {
         AuthenticationSystem authSystem = new AuthenticationSystem("users.txt");
         Scanner scanner = new Scanner(System.in);
@@ -27,6 +28,9 @@ public class Main {
                     boolean loginStatus = authSystem.login(loginUsername, loginPassword);
                     if (loginStatus) {
                         System.out.println("Login successful!");
+                        Gameplay gameplay = new Gameplay();
+                        gameplay.run();
+
                     } else {
                         System.out.println("Invalid username or password.");
                     }
