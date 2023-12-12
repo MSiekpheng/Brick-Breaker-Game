@@ -17,12 +17,7 @@ public class Main {
                     String regUsername = scanner.nextLine();
                     System.out.print("Enter password: ");
                     String regPassword = scanner.nextLine();
-                    boolean regStatus = authSystem.register(regUsername, regPassword);
-                    if (regStatus) {
-                        System.out.println("Registration successful!");
-                    } else {
-                        System.out.println("Username already exists. Try a different username.");
-                    }
+                    authSystem.register(regUsername, regPassword);
                     break;
                 case 2:
                     System.out.print("Enter username: ");

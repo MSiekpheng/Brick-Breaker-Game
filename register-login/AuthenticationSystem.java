@@ -31,22 +31,37 @@ public class AuthenticationSystem {
     private void saveUsers() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (Map.Entry<String, String> entry : loginInfo.entrySet()) {
-                writer.write(entry.getKey() + "," + entry.getValue());
+                String username = entry.getKey();
+                String password = entry.getValue();
+    
+                writer.write(username + "," + password);
                 writer.newLine();
+                
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
 
     public boolean register(String username, String password) {
+        // Check if username or password is empty
+        if (username.isEmpty() || password.isEmpty()) {
+            System.err.println("Error: Empty username or password. Registration failed.");
+            return false;
+        }
+    
         if (loginInfo.containsKey(username)) {
+            System.err.println("Error: Username already exists. Registration failed.");
             return false; // Username already exists
         }
+    
         loginInfo.put(username, password);
         saveUsers();
+        System.out.println("Registration successful for username: " + username);
         return true; // Registration successful
     }
+    
 
     public boolean login(String username, String password) {
         return loginInfo.containsKey(username) && loginInfo.get(username).equals(password);
