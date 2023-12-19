@@ -4,8 +4,8 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class AuthenticationSystem {
-    private Map<String, String> loginInfo;
-    private File file;
+    private static final String USER_FILE_PATH = "users.txt";
+    private Map<String, User> loginInfo;
 
     public AuthenticationSystem() {
         loginInfo = new HashMap<>();
@@ -46,7 +46,14 @@ public class AuthenticationSystem {
         }
     }
 
-    public boolean register(String username, String password) {
+    public void register(int roleChoice, String username, String password) {
+        
+
+        if (roleChoice != 1 && roleChoice != 2) {
+            System.err.println("Invalid input!");
+            return;
+        }
+
         // Check if username or password is empty
         if (username.isEmpty() || password.isEmpty()) {
             System.err.println("Error: Empty username or password. Registration failed.");
@@ -69,14 +76,29 @@ public class AuthenticationSystem {
 
         saveUsers();
         System.out.println("Registration successful for username: " + username);
-        return true; // Registration successful
+        return; // Registration successful
     }
 
-    public boolean authenticate(String enteredPassword) {
+    public boolean authenticate(String enteredPassword, String password) {
         return password.equals(enteredPassword);
     }
+    
 
     public boolean login(String username, String password) {
-        return loginInfo.containsKey(username) && loginInfo.get(username).equals(password);
+        User authenticatedUser = loginInfo.get(username);
+
+        if (authenticatedUser != null && authenticatedUser.authenticate(username, password)) {
+            if (authenticatedUser instanceof Admin) {
+                System.out.println("Admin logged in!");
+                return true;
+            } else {
+                System.out.println("Regular user logged in!");
+                return true;
+            }
+        } else {
+            System.out.println("Authentication failed. Invalid username or password.");
+            return false;
+        }
     }
+    
 }
