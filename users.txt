@@ -1,3 +1,5 @@
 Thanan:1234
+Admin:123:admin
 mengthong:123:admin
+user:1111
 Pheng:123:admin

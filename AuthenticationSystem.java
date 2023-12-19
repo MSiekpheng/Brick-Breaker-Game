@@ -47,26 +47,13 @@ public class AuthenticationSystem {
         }
     }
 
-    public void register() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Select role for registration:");
-        System.out.println("1. User");
-        System.out.println("2. Admin");
-        System.out.print("Enter your choice: ");
-
-        int roleChoice = scanner.nextInt();
-        scanner.nextLine();  // Consume newline
+    public void register(int roleChoice, String username, String password) {
+        
 
         if (roleChoice != 1 && roleChoice != 2) {
             System.err.println("Invalid input!");
             return;
         }
-
-        System.out.print("Enter new username: ");
-        username = scanner.nextLine();
-
-        System.out.print("Enter new password: ");
-        password = scanner.nextLine();
 
         // Check if username or password is empty
         if (username.isEmpty() || password.isEmpty()) {
