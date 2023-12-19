@@ -1,5 +1,12 @@
 Thanan:1234
+<<<<<<< HEAD
 testing:123
 Admin: admin:admin:admin
 user:123
 Admin: Pheng:123:admin
+=======
+Admin:123:admin
+mengthong:123:admin
+user:1111
+Pheng:123:admin
+>>>>>>> adfad5090453b8a3917c349514bb8f3690ffb568

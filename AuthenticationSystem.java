@@ -4,11 +4,8 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class AuthenticationSystem {
-    private static final String USER_FILE_PATH = "users.txt";
-    private Map<String, User> loginInfo;
-    private String username;
-    String password;
-    private User loggedInUser;
+    private Map<String, String> loginInfo;
+    private File file;
 
     public AuthenticationSystem() {
         loginInfo = new HashMap<>();
@@ -49,27 +46,7 @@ public class AuthenticationSystem {
         }
     }
 
-    public void register() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Select role for registration:");
-        System.out.println("1. User");
-        System.out.println("2. Admin");
-        System.out.print("Enter your choice: ");
-
-        int roleChoice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-
-        if (roleChoice != 1 && roleChoice != 2) {
-            System.err.println("Invalid input!");
-            return;
-        }
-
-        System.out.print("Enter new username: ");
-        username = scanner.nextLine();
-
-        System.out.print("Enter new password: ");
-        password = scanner.nextLine();
-
+    public boolean register(String username, String password) {
         // Check if username or password is empty
         if (username.isEmpty() || password.isEmpty()) {
             System.err.println("Error: Empty username or password. Registration failed.");
@@ -92,7 +69,7 @@ public class AuthenticationSystem {
 
         saveUsers();
         System.out.println("Registration successful for username: " + username);
-        return; // Registration successful
+        return true; // Registration successful
     }
 
     public boolean authenticate(String enteredPassword) {
@@ -100,25 +77,6 @@ public class AuthenticationSystem {
     }
 
     public boolean login(String username, String password) {
-        User authenticatedUser = loginInfo.get(username);
-
-        if (authenticatedUser != null && authenticatedUser.authenticate(username, password)) {
-            loggedInUser = authenticatedUser; // Store authenticated user as loggedInUser
-            if (authenticatedUser instanceof Admin) {
-                System.out.println("Admin logged in!");
-                return true;
-            } else {
-                System.out.println("Regular user logged in!");
-                return true;
-            }
-        } else {
-            System.out.println("Authentication failed. Invalid username or password.");
-            return false;
-        }
+        return loginInfo.containsKey(username) && loginInfo.get(username).equals(password);
     }
-
-    public String getLoggedInUsername() {
-        return (loggedInUser != null) ? loggedInUser.getUsername() : null;
-    }
-
 }
