@@ -1,11 +1,12 @@
 import java.util.Scanner;
+import javax.swing.JFrame;
 
-public class Main {
-
+public class Game {
 
     public static void main(String[] args) {
-        AuthenticationSystem authSystem = new AuthenticationSystem("users.txt");
+        AuthenticationSystem authSystem = new AuthenticationSystem();
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.println("1. Register\n2. Login\n3. Exit");
             System.out.print("Enter your choice: ");
@@ -14,11 +15,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter username: ");
-                    String regUsername = scanner.nextLine();
-                    System.out.print("Enter password: ");
-                    String regPassword = scanner.nextLine();
-                    authSystem.register(regUsername, regPassword);
+                    authSystem.register();
                     break;
                 case 2:
                     System.out.print("Enter username: ");
@@ -27,12 +24,17 @@ public class Main {
                     String loginPassword = scanner.nextLine();
                     boolean loginStatus = authSystem.login(loginUsername, loginPassword);
                     if (loginStatus) {
-                        System.out.println("Login successful!");
-                        Gameplay gameplay = new Gameplay();
-                        gameplay.run();
 
-                    } else {
-                        System.out.println("Invalid username or password.");
+                        JFrame obj = new JFrame();
+                        Gameplay gamePlay = new Gameplay();
+
+                        obj.setBounds(10, 10, 700, 600);
+                        obj.setTitle("Breakout Ball");
+                        obj.setResizable(false);
+                        obj.setVisible(true);
+                        obj.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        obj.add(gamePlay);
+                        obj.setVisible(true);
                     }
                     break;
                 case 3:
