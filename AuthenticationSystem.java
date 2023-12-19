@@ -6,7 +6,6 @@ import java.util.*;
 public class AuthenticationSystem {
     private static final String USER_FILE_PATH = "users.txt";
     private Map<String, User> loginInfo;
-    private String username; String password;
 
     public AuthenticationSystem() {
         loginInfo = new HashMap<>();
@@ -80,7 +79,7 @@ public class AuthenticationSystem {
         return; // Registration successful
     }
 
-    public boolean authenticate(String enteredPassword) {
+    public boolean authenticate(String enteredPassword, String password) {
         return password.equals(enteredPassword);
     }
     
