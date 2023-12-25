@@ -14,30 +14,33 @@ public class AuthenticationSystem {
 
     private void loadUsers() {
         Path filePath = Paths.get(USER_FILE_PATH);
-
+    
         try (Scanner fileScanner = new Scanner(filePath.toFile())) {
             while (fileScanner.hasNextLine()) {
                 String[] userInfo = fileScanner.nextLine().split(":");
-                if (userInfo.length == 2) {
+                if ("0".equals(userInfo[2])) {
                     User user = new User(userInfo[0], userInfo[1]);
                     loginInfo.put(userInfo[0], user);
-                } else if (userInfo.length == 3 && userInfo[2].equals("admin")) {
+                } else if ("1".equals(userInfo[2])) {
                     Admin admin = new Admin(userInfo[0], userInfo[1]);
                     loginInfo.put(userInfo[0], admin);
+                } else {
+                    System.err.println("Invalid role value in the file.");
                 }
             }
         } catch (IOException e) {
             System.err.println("Error loading users from file: " + e.getMessage());
         }
     }
+    
 
     private void saveUsers() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(USER_FILE_PATH))) {
             for (User user : loginInfo.values()) {
                 if (user instanceof Admin) {
-                    writer.write(user.getUserInfo() + ":admin");
+                    writer.write(user.getUserInfo() + ":1");
                 } else {
-                    writer.write(user.getUserInfo());
+                    writer.write(user.getUserInfo() + ":0");
                 }
                 writer.newLine();
             }
