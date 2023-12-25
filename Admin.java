@@ -1,6 +1,7 @@
 class Admin extends User {
     public Admin(String username, String password) {
         super(username, password);
+        lives = 10;
     }
 
     @Override
@@ -18,12 +19,11 @@ class Admin extends User {
     @Override
     public void resetLives() {
         // You can add any special behavior specific to Admin if needed
-        this.lives = 10; // Calling the resetLives method of the superclass (User)
+        lives = 10; // Calling the resetLives method of the superclass (User)
     }
 
     @Override
     public int getLives() {
-        this.lives = 10;
-        return lives;
+        return super.getLives();
     }
 }

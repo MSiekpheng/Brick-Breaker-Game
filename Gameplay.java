@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener 
 {	
-	private User player = new User(getToolTipText(), getName());
+	private User player;
 	private boolean play = false;
 	private int score = 0;
 	
@@ -24,12 +24,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 	
 	private MapGenerator map;
 	
-	public Gameplay(int isAdmin) {
+	public Gameplay(int isAdmin, String username, String password) {
 		if (isAdmin == 1) {
-			player = new Admin(getToolTipText(), getName());
+			player = new Admin(username, password);
 		}
 		else {
-			player = new User(getToolTipText(), getName());
+			player = new User(username, password);
 		}		
 		map = new MapGenerator(4, 12);
 		addKeyListener(this);
@@ -58,6 +58,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 		g.setColor(Color.white);
 		g.setFont(new Font("serif",Font.BOLD, 25));
 		g.drawString(""+score, 590,30);
+
+		// the lives
+		g.setColor(Color.white);
+    	g.setFont(new Font("serif", Font.BOLD, 25));
+    	g.drawString("Lives: " + player.getLives() , 30, 30);
 		
 		// the paddle
 		g.setColor(Color.green);

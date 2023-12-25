@@ -46,7 +46,7 @@ public class Game {
 
                     
                         JFrame obj=new JFrame();
-                        Gameplay gamePlay = new Gameplay(loginStatus);
+                        Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);
                             
                         obj.setBounds(10, 10, 700, 600);
                         obj.setTitle("Breakout Ball");		
