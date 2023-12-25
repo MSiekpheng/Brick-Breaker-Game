@@ -3,10 +3,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import java.awt.*;
-import javax.swing.Timer;
 
 public class Gameplay extends JPanel implements KeyListener, ActionListener 
-{
+{	
+	private User player = new User(getToolTipText(), getName());
 	private boolean play = false;
 	private int score = 0;
 	
@@ -24,8 +24,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 	
 	private MapGenerator map;
 	
-	public Gameplay()
-	{		
+	public Gameplay(int isAdmin) {
+		if (isAdmin == 1) {
+			player = new Admin(getToolTipText(), getName());
+		}
+		else {
+			player = new User(getToolTipText(), getName());
+		}		
 		map = new MapGenerator(4, 12);
 		addKeyListener(this);
 		setFocusable(true);
@@ -79,18 +84,33 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 		
 		// when you lose the game
 		if(ballposY > 570)
-        {
-			 play = false;
-             ballXdir = 0;
-     		 ballYdir = 0;
-             g.setColor(Color.RED);
-             g.setFont(new Font("serif",Font.BOLD, 30));
-             g.drawString("Game Over, Scores: "+score, 190,300);
-             
-             g.setColor(Color.RED);
-             g.setFont(new Font("serif",Font.BOLD, 20));           
-             g.drawString("Press (Enter) to Restart", 230,350);        
-        }
+        {	
+			player.loseLife();
+            if (!player.isAlive()) {
+                // Game Over logic here
+                play = false;
+                ballXdir = 0;
+                ballYdir = 0;
+				play = false;
+				ballXdir = 0;
+				 ballYdir = 0;
+				g.setColor(Color.RED);
+				g.setFont(new Font("serif",Font.BOLD, 30));
+				g.drawString("Game Over, Scores: "+score, 190,300);
+				
+				g.setColor(Color.RED);
+				g.setFont(new Font("serif",Font.BOLD, 20));           
+				g.drawString("Press (Enter) to Restart", 230,350);        
+       		}
+			else {
+				// Reset ball and paddle positions
+				ballposX = 120;
+				ballposY = 350;
+				ballXdir = -1;
+				ballYdir = -2;
+				playerX = 310;
+			}
+	}
 		
 		g.dispose();
 	}	

@@ -16,7 +16,7 @@ public class Game {
                 scanner.nextLine(); // Clear the invalid input
                 continue;
             }
-            
+
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -41,12 +41,12 @@ public class Game {
                     String loginUsername = scanner.nextLine();
                     System.out.print("Enter password: ");
                     String loginPassword = scanner.nextLine();
-                    boolean loginStatus = authSystem.login(loginUsername, loginPassword);
-                    if (loginStatus) {
+                    int loginStatus = authSystem.login(loginUsername, loginPassword);
+                    if (loginStatus == 0 || loginStatus == 1) {
 
                     
                         JFrame obj=new JFrame();
-                        Gameplay gamePlay = new Gameplay();
+                        Gameplay gamePlay = new Gameplay(loginStatus);
                             
                         obj.setBounds(10, 10, 700, 600);
                         obj.setTitle("Breakout Ball");		

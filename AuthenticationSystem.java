@@ -87,20 +87,20 @@ public class AuthenticationSystem {
     }
     
 
-    public boolean login(String username, String password) {
+    public int login(String username, String password) {
         User authenticatedUser = loginInfo.get(username);
 
         if (authenticatedUser != null && authenticatedUser.authenticate(username, password)) {
             if (authenticatedUser instanceof Admin) {
                 System.out.println("Admin logged in!");
-                return true;
+                return 1;
             } else {
                 System.out.println("Regular user logged in!");
-                return true;
+                return 0;
             }
         } else {
             System.out.println("Authentication failed. Invalid username or password.");
-            return false;
+            return 2;
         }
     }
     
