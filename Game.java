@@ -10,6 +10,13 @@ public class Game {
         while (true) {
             System.out.println("1. Register\n2. Login\n3. Exit");
             System.out.print("Enter your choice: ");
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("Invalid input");
+                scanner.nextLine(); // Clear the invalid input
+                continue;
+            }
+            
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
