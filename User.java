@@ -31,7 +31,7 @@ class User {
 
     // Method to reset lives (if needed in the game logic)
     public void resetLives() {
-        lives = 3;  // Reset lives to default. Adjust as needed.
+        lives = 3;
     }
 
     public int getLives() {

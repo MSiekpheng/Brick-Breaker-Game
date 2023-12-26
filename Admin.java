@@ -6,20 +6,17 @@ class Admin extends User {
 
     @Override
     public void loseLife() {
-        // You can add any special behavior specific to Admin if needed
-        super.loseLife(); // Calling the loseLife method of the superclass (User)
+        super.loseLife();
     }
 
     @Override
     public boolean isAlive() {
-        // You can add any special behavior specific to Admin if needed
-        return super.isAlive(); // Calling the isAlive method of the superclass (User)
+        return super.isAlive();
     }
 
     @Override
     public void resetLives() {
-        // You can add any special behavior specific to Admin if needed
-        lives = 10; // Calling the resetLives method of the superclass (User)
+        lives = 10;
     }
 
     @Override
