@@ -2,11 +2,13 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+// Interface for MapDrawable
 interface MapDrawable {
-    void draw(Graphics2D g);
-    void setBrickValue(int value, int row, int col);
+    void draw(Graphics2D g); // Method to draw on map
+    void setBrickValue(int value, int row, int col); // Method to set value of brick on map
 }
 
+// MapGenerator class implementing MapDrawable
 public class MapGenerator implements MapDrawable {
 	public int map[][];
 	public int brickWidth;

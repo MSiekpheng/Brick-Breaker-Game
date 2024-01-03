@@ -1,20 +1,25 @@
+import javax.swing.JOptionPane;
+
 // Base class for User
 public class User {
+    // Attributes
     protected String username;
     protected String password;
     protected int lives;
 
+    // Constructor
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.lives = 3;
     }
 
+    // Method to get user information
     public String getUserInfo() {
         return username + ":" + password;
     }
 
-    // overloading function
+     // Overloaded method for getUserInfo
     public String getUserInfo(boolean onlyUsername) {
         if (onlyUsername) {
             return username;
@@ -23,6 +28,7 @@ public class User {
         }
     }
 
+    // Method to authenticate user
     public boolean authenticate(String enteredUsername, String enteredPassword) {
         return username.equals(enteredUsername) && password.equals(enteredPassword);
     }
@@ -42,12 +48,13 @@ public class User {
         return lives = 3;
     }
 
+    // Method to get lives
     public int getLives() {
         return lives;
     }
 
-    // Method overridden in Admin class
+    // Method to perform special action (overridden in Admin class)
     public void performSpecialAction() {
-        System.out.println("Regular action performed.");
+        JOptionPane.showMessageDialog(null, "Normal User have login. " + getUserInfo(true));
     }
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+// Gameplay class
 public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	private User player;
 	private boolean play = false;
@@ -28,8 +29,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 	public Gameplay(int isAdmin, String username, String password) {
 		if (isAdmin == 1) {
 			player = new Admin(username, password); // Assign Admin object to the player variable
+			player.performSpecialAction();
 		} else {
 			player = new User(username, password); // Assign User object to the player variable
+			player.performSpecialAction();
 		}
 		map = new MapGenerator(4, 12);
 		addKeyListener(this);
@@ -230,7 +233,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		}
 	}
 
-	// Static method
+	// Static method to initialize game
 	public static void initializeGame(int loginStatus, String loginUsername, String loginPassword) {
 		JFrame obj = new JFrame();
 		Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);

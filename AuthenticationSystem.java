@@ -3,24 +3,28 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+// Interface for Authentication
 interface AuthenticationInterface {
-    void saveAndLoadUsers();
+    void saveAndLoadUsers(); // Method to save and load users
 }
 
+// AuthenticationSystem class
 public class AuthenticationSystem {
+    // Constants for file path
     private static final String USER_FILE_PATH = "users.txt";
     private Map<String, User> loginInfo;
 
+    // Constructor to initialize login information
     public AuthenticationSystem() {
         loginInfo = new HashMap<>();
-        // Calling the lamda expression
-        loadUsers.saveAndLoadUsers();
+        // Lambda expression for loading users
+        loadUsers.saveAndLoadUsers(); // Load users from file
     }
 
-    // Lamda expression
+    // Lambda expression to load users from file
     AuthenticationInterface loadUsers = () -> {
         Path filePath = Paths.get(USER_FILE_PATH);
-
+        // File I/O and exception handling to load users from file
         try (Scanner fileScanner = new Scanner(filePath.toFile())) {
             while (fileScanner.hasNextLine()) {
                 String[] userInfo = fileScanner.nextLine().split(":");
@@ -39,8 +43,9 @@ public class AuthenticationSystem {
         }
     };
 
-    // Lamda expression
+    // Lambda expression to save users to file
     AuthenticationInterface saveUsers = () -> {
+        // File I/O and exception handling
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(USER_FILE_PATH))) {
             for (User user : loginInfo.values()) {
                 if (user instanceof Admin) {
@@ -55,6 +60,7 @@ public class AuthenticationSystem {
         }
     };
 
+    // Method to register users
     public void register(int roleChoice, String username, String password) {
 
         if (roleChoice != 1 && roleChoice != 2) {
@@ -68,6 +74,7 @@ public class AuthenticationSystem {
             return;
         }
 
+        // Check if username exists or not
         if (loginInfo.containsKey(username)) {
             System.err.println("Error: Username already exists. Registration failed.");
             return; // Username already exists
@@ -88,6 +95,7 @@ public class AuthenticationSystem {
         return; // Registration successful
     }
 
+    // Method to login users
     public int login(String username, String password) {
         User authenticatedUser = loginInfo.get(username);
 
