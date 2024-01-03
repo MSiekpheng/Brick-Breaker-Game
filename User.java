@@ -1,5 +1,5 @@
 // Base class for User
-class User {
+public class User {
     protected String username;
     protected String password;
     protected int lives;
@@ -10,9 +10,17 @@ class User {
         this.lives = 3;
     }
 
-
     public String getUserInfo() {
         return username + ":" + password;
+    }
+
+    // overloading function
+    public String getUserInfo(boolean onlyUsername) {
+        if (onlyUsername) {
+            return username;
+        } else {
+            return getUserInfo();
+        }
     }
 
     public boolean authenticate(String enteredUsername, String enteredPassword) {
@@ -30,11 +38,16 @@ class User {
     }
 
     // Method to reset lives (if needed in the game logic)
-    public void resetLives() {
-        lives = 3;
+    public int resetLives() {
+        return lives = 3;
     }
 
     public int getLives() {
         return lives;
+    }
+
+    // Method overridden in Admin class
+    public void performSpecialAction() {
+        System.out.println("Regular action performed.");
     }
 }

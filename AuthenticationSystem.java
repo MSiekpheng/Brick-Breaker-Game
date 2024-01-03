@@ -3,18 +3,24 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+interface AuthenticationInterface {
+    void saveAndLoadUsers();
+}
+
 public class AuthenticationSystem {
     private static final String USER_FILE_PATH = "users.txt";
     private Map<String, User> loginInfo;
 
     public AuthenticationSystem() {
         loginInfo = new HashMap<>();
-        loadUsers();
+        // Calling the lamda expression
+        loadUsers.saveAndLoadUsers();
     }
 
-    private void loadUsers() {
+    // Lamda expression
+    AuthenticationInterface loadUsers = () -> {
         Path filePath = Paths.get(USER_FILE_PATH);
-    
+
         try (Scanner fileScanner = new Scanner(filePath.toFile())) {
             while (fileScanner.hasNextLine()) {
                 String[] userInfo = fileScanner.nextLine().split(":");
@@ -31,10 +37,10 @@ public class AuthenticationSystem {
         } catch (IOException e) {
             System.err.println("Error loading users from file: " + e.getMessage());
         }
-    }
-    
+    };
 
-    private void saveUsers() {
+    // Lamda expression
+    AuthenticationInterface saveUsers = () -> {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(USER_FILE_PATH))) {
             for (User user : loginInfo.values()) {
                 if (user instanceof Admin) {
@@ -47,10 +53,9 @@ public class AuthenticationSystem {
         } catch (IOException e) {
             System.err.println("Error saving users to file: " + e.getMessage());
         }
-    }
+    };
 
     public void register(int roleChoice, String username, String password) {
-        
 
         if (roleChoice != 1 && roleChoice != 2) {
             System.err.println("Invalid input!");
@@ -77,25 +82,21 @@ public class AuthenticationSystem {
 
         loginInfo.put(username, newUser);
 
-        saveUsers();
-        System.out.println("Registration successful for username: " + username);
+        // Calling the lamda expression
+        saveUsers.saveAndLoadUsers();
+        System.out.println("Registration successful for username: " + newUser.getUserInfo(true));
         return; // Registration successful
     }
-
-    public boolean authenticate(String enteredPassword, String password) {
-        return password.equals(enteredPassword);
-    }
-    
 
     public int login(String username, String password) {
         User authenticatedUser = loginInfo.get(username);
 
         if (authenticatedUser != null && authenticatedUser.authenticate(username, password)) {
             if (authenticatedUser instanceof Admin) {
-                System.out.println("Admin logged in!");
+                System.out.println("Admin logged in! for username: " + authenticatedUser.getUserInfo(true));
                 return 1;
             } else {
-                System.out.println("Regular user logged in!");
+                System.out.println("Regular user logged in! for username: " + authenticatedUser.getUserInfo(true));
                 return 0;
             }
         } else {
@@ -103,5 +104,5 @@ public class AuthenticationSystem {
             return 2;
         }
     }
-    
+
 }

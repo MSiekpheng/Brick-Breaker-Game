@@ -1,7 +1,7 @@
-class Admin extends User {
+public class Admin extends User {
     public Admin(String username, String password) {
         super(username, password);
-        lives = 10;
+        lives = 5;
     }
 
     @Override
@@ -9,18 +9,22 @@ class Admin extends User {
         super.loseLife();
     }
 
-    @Override
     public boolean isAlive() {
         return super.isAlive();
     }
 
-    @Override
-    public void resetLives() {
-        lives = 10;
+    public int resetLives() {
+        return lives = 5;
     }
 
     @Override
     public int getLives() {
-        return super.getLives();
+        return lives;
+    }
+
+    // Overriding method from User class
+    @Override
+    public void performSpecialAction() {
+        System.out.println("Special admin action performed.");
     }
 }

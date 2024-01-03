@@ -1,10 +1,8 @@
 import java.util.Scanner;
-import javax.swing.JFrame;
 
 public class Game {
-
-
     public static void main(String[] args) {
+
         AuthenticationSystem authSystem = new AuthenticationSystem();
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -28,7 +26,7 @@ public class Game {
                     System.out.print("Enter your choice: ");
 
                     int roleChoice = scanner.nextInt();
-                    scanner.nextLine();  // Consume newline
+                    scanner.nextLine(); // Consume newline
                     System.out.print("Enter new username: ");
                     String username = scanner.nextLine();
 
@@ -43,17 +41,8 @@ public class Game {
                     String loginPassword = scanner.nextLine();
                     int loginStatus = authSystem.login(loginUsername, loginPassword);
                     if (loginStatus == 0 || loginStatus == 1) {
-
-                    
-                        JFrame obj=new JFrame();
-                        Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);
-                            
-                        obj.setBounds(10, 10, 700, 600);
-                        obj.setTitle("Breakout Ball");		
-                        obj.setResizable(false);
-                        obj.setVisible(true);
-                        obj.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);                            obj.add(gamePlay);
-                        obj.setVisible(true);
+                        // Call static method
+                        Gameplay.initializeGame(loginStatus, loginUsername, loginPassword);
                     }
                     break;
                 case 3:
