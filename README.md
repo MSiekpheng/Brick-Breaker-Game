@@ -1,40 +1,89 @@
-Brick Breaker Game
-Welcome to the Brick Breaker Game, a Java implementation that brings the classic brick-breaking excitement to your fingertips. This game involves breaking bricks with a bouncing ball controlled by a paddle. Below, you'll find a detailed breakdown of the game's key components and features.
+# Project Name
 
-Key Components
-Classes & Objects
-AuthenticationSystem:
+## Table of Contents
 
-Manages user registration, login, and authentication.
-Game:
+- [Classes & Objects](#classes--objects)
+- [Inheritance](#inheritance)
+- [Constructor](#constructor)
+- [Overloading Method](#overloading-method)
+- [Overriding Method](#overriding-method)
+- [Polymorphism](#polymorphism)
+- [Encapsulation](#encapsulation)
+- [Abstraction](#abstraction)
+- [Exception Handling](#exception-handling)
+- [File I/O](#file-io)
+- [Functional Interface/Lambda Expression](#functional-interfacelambda-expression)
+- [Static Method](#static-method)
 
-Main class that handles the game loop, user interactions, and menu.
-Gameplay:
+---
 
-Implements the actual gameplay, including the paddle, ball, and brick interactions.
-MapGenerator:
+## Classes & Objects
 
-Generates the layout of bricks for the game.
-Inheritance
-The Admin class inherits from the User class, representing an admin user with extended functionalities.
-Constructors
-Constructors are present in classes like AuthenticationSystem, Gameplay, and others, initializing necessary components during object creation.
-Overloading Method
-The getUserInfo method in the User class is overloaded to provide different representations.
-Overriding Method
-The performSpecialAction method is overridden in both User and Admin classes.
-Polymorphism
-Achieved through method overriding and overloading, enabling flexibility in handling users and admins. Casting is done implicitly when checking if a user is an instance of Admin.
-Encapsulation
-Access modifiers like private, protected, and public are used to encapsulate the fields of the classes, controlling access to the data.
-Abstraction
-Achieved through the MapDrawable interface, providing a blueprint for drawing maps in the game.
-Exception Handling
-Exceptions are handled using try-catch blocks in the AuthenticationSystem and Game classes, ensuring smooth error handling during user interactions.
-File I/O
-The AuthenticationSystem class uses file I/O to save and load user information from a file.
-Lambda Expression
-Lambda expressions are utilized with the AuthenticationInterface interface in the AuthenticationSystem class for a concise implementation of file loading and saving operations.
-Static Method
-The initializeGame method in the Gameplay class is static, allowing for the initialization of the game without creating an instance of the class.
-This Brick Breaker Game is a testament to various fundamental programming concepts and best practices. Explore and contribute to enhancing the gaming experience. Let the fun begin! 🎮🧱
+### Classes
+
+1. **Game.java:**
+    - Contains the main method to run the game.
+    - Manages user registration, login, and initiation of gameplay.
+
+2. **Gameplay.java:**
+    - Represents the gameplay screen.
+    - Handles game control.
+
+3. **AuthenticationSystem:**
+    - Manages user authentication, registration, and user data storage.
+    - Utilizes lambda expressions for loading and saving user data from/to a file.
+
+4. **MapGenerator:**
+    - Generates the game's map with bricks.
+    - Renders the map on the gameplay screen.
+
+5. **User:**
+    - Base class for users in the game.
+    - Contains basic user information and methods for user authentication and game interaction.
+    - Implements method overriding to demonstrate polymorphism.
+
+6. **Admin:**
+    - Subclass of User representing administrators.
+    - Inherits properties and methods from the User class.
+    - Overrides certain methods to exhibit specialized behavior.
+
+### Objects
+
+- `AuthenticationSystem authSystem = new AuthenticationSystem();`
+    - Handles user authentication and data management.
+
+- `Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);`
+    - Initiates the gameplay session for a logged-in user.
+
+- `User user = new User(userInfo[0], userInfo[1]);`
+    - Manages user-related information in the game.
+
+---
+
+## Inheritance: Superclass & Subclass
+
+- **Superclass:** `User`
+    - Defines common properties and behaviors for all users.
+
+- **Subclass:** `Admin`
+    - Extends `User` and adds specific features for admin users.
+
+---
+
+## Constructor
+
+### Constructor Examples
+
+- **Gameplay Class Constructor:**
+    - Parameters: `int isAdmin, String username, String password`
+    - Purpose: Initializes a `Gameplay` object.
+
+- **User Class Constructor:**
+    - Parameters: `String username, String password`
+    - Purpose: Initializes a `User` object.
+
+- **Admin Class Constructor:**
+    - Parameters: `String username, String password`
+    - Purpose: Initializes an `Admin` object.
+
+---
