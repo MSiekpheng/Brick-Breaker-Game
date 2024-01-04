@@ -212,7 +212,7 @@ registerUser():
 
 loginUser():
 
-Signature: private static void loginUser(AuthenticationSystem authSystem, Scanner scanner)
-Purpose: This method handles the login process for users within the Brick Breaker Game.
+- Signature: private static void loginUser(AuthenticationSystem authSystem, Scanner scanner)
+- Purpose: This method handles the login process for users within the Brick Breaker Game.
 
 ---
