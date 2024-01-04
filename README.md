@@ -9,8 +9,6 @@ This repository showcases a Java implementation of a Brick Breaker Game. The gam
 The Brick Breaker Game is a Java-based project featuring key components such as user authentication, dynamic gameplay mechanics, and a customizable map generator. With the inheritance of user roles, robust exception handling, and an engaging user interface, this project encapsulates the essence of a classic arcade game while integrating modern programming concepts.
 
 ## Table of Contents
-
-- [Brick Breaker Game](#brick-breaker-game)
   - [Introduction](#introduction)
   - [Overview](#overview)
   - [Table of Contents](#table-of-contents)
@@ -25,7 +23,6 @@ The Brick Breaker Game is a Java-based project featuring key components such as 
   - [Inheritance:](#inheritance)
     - [Superclass \& Subclass:](#superclass--subclass)
   - [Constructor](#constructor)
-    - [Constructor Examples](#constructor-examples)
   - [Overloading Method](#overloading-method)
     - [getUserInfo() Method (User Class)](#getuserinfo-method-user-class)
   - [Overriding Method](#overriding-method)
@@ -103,19 +100,17 @@ The Brick Breaker Game is a Java-based project featuring key components such as 
 
 ## Constructor
 
-### Constructor Examples
-
 Constructors are present in classes like AuthenticationSystem, Gameplay, and others, initializing necessary components during object creation
 
 **Gameplay Class Constructor:**
    - Parameters: `int isAdmin, String username, String password`
    - Purpose: Initializes a Gameplay object.
 
-- **User Class Constructor:**
+**User Class Constructor:**
    - Parameters: `String username, String password`
    - Purpose: Initializes a User object.
 
-- **Admin Class Constructor:**
+**Admin Class Constructor:**
    - Parameters: `String username, String password`
    - Purpose: Initializes an Admin object.
 
@@ -137,22 +132,25 @@ Constructors are present in classes like AuthenticationSystem, Gameplay, and oth
 ## Overriding Method
 
 - In this case, the ‘performSpecialAction()’ method in the Admin class overrides the method with the same signature in the User class. The @Override annotation indicates that this method is intentionally overriding the superclass's method.
+
+Method in User class:
+
+- `public void performSpecialAction() {
+    JOptionPane.showMessageDialog(null, "Normal User have login. " + getUserInfo(true));
+}`
+
+Method in Admin class (overrides performSpecialAction() from User class):
+
+@Override
+- `public void performSpecialAction() {
+    JOptionPane.showMessageDialog(null, "Admin User have special privileges. " + getUserInfo(true));
+}`
+
 ---
 
 ## Polymorphism
 - Explanation: When you have a reference to the superclass (User class) that points to an object of the subclass (Admin class) and you call the performSpecialAction() method through this reference, the method in the Admin class will be executed instead of the one in the User class.
 - Purpose: This feature allows different behavior to be exhibited based on the actual type of the object, showing different behaviors for User and Admin instances while using a common method name.
-- Method in User class:
-
-`public void performSpecialAction() {
-    JOptionPane.showMessageDialog(null, "Normal User have login. " + getUserInfo(true));
-}`
-- Method in Admin class (overrides performSpecialAction() from User class)
-
-@Override
-`public void performSpecialAction() {
-    JOptionPane.showMessageDialog(null, "Admin User have special privileges. " + getUserInfo(true));
-}`
 
 ## Encapsulation
 
@@ -170,7 +168,10 @@ Constructors are present in classes like AuthenticationSystem, Gameplay, and oth
 
 ## Abstraction
 
-- The `AuthenticationInterface` interface already specifies the method saveAndLoadUsers(), which is implicitly abstract due to its presence within the interface. Hence, it is indeed an abstract method, as all interface methods are abstract by default, and it doesn't need the abstract keyword explicitly stated in this case.
+In the `MapGenerator.java` file, we declared a MapDrawable interface contains two abstract methods:
+- `void draw(Graphics2D g)` - This method is used to draw on the map. It takes a Graphics2D object as a parameter and defines the behavior to draw on the map using the Graphics2D API.
+
+- `void setBrickValue(int value, int row, int col)` - This method is responsible for setting the value of a brick on the map. It takes three parameters: value (the value to set for the brick), row (the row number where the brick is located), and col (the column number where the brick is located).
 
 ---
 
