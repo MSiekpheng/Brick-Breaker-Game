@@ -238,7 +238,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 		JFrame obj = new JFrame();
 		Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);
 
-		obj.setBounds(10, 10, 700, 600);
+		obj.setBounds(10, 10, 700, 620);
 		obj.setTitle("Breakout Ball");
 		obj.setResizable(false);
 		obj.setVisible(true);
