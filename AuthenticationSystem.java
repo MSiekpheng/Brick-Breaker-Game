@@ -3,7 +3,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-// Interface for Authentication
+// Funtional Interface for Authentication
 interface AuthenticationInterface {
     void saveAndLoadUsers(); // Method to save and load users
 }
