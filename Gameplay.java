@@ -96,9 +96,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 				play = false;
 				ballXdir = 0;
 				ballYdir = 0;
-				play = false;
-				ballXdir = 0;
-				ballYdir = 0;
 				g.setColor(Color.RED);
 				g.setFont(new Font("serif", Font.BOLD, 30));
 				g.drawString("Game Over, Scores: " + score, 190, 300);
@@ -161,12 +158,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
 	public void moveRight() {
 		play = true;
-		playerX += 20;
+		playerX += 30;
 	}
 
 	public void moveLeft() {
 		play = true;
-		playerX -= 20;
+		playerX -= 30;
 	}
 
 	public void actionPerformed(ActionEvent e) {
