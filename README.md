@@ -36,7 +36,6 @@ The Brick Breaker Game is a Java-based project featuring key components such as 
     - [File I/O Implementation](#file-io-implementation)
   - [Functional Interface/Lambda Expression](#functional-interfacelambda-expression)
   - [Static Method](#static-method)
-    - [initializeGame()](#initializegame)
 
 ---
 
@@ -201,9 +200,19 @@ In the `MapGenerator.java` file, we declared a MapDrawable interface contains tw
 ---
 ## Static Method
 
-### initializeGame()
+initializeGame()
 
 - Static Method: It belongs to the class and not to the instances (objects) of the class. They can be called without creating an instance of the class.
 - ‘initializeGame()’ is declared as a static method. Static methods belong to the class rather than to any specific instance of the class. They can be called using the class name itself ‘(Gameplay.initializeGame())’, without needing to create an object of the class.
+
+registerUser():
+
+- Signature: private static void registerUser(AuthenticationSystem authSystem, Scanner scanner)
+- Purpose: This method handles the registration of new users within the Brick Breaker Game.
+
+loginUser():
+
+Signature: private static void loginUser(AuthenticationSystem authSystem, Scanner scanner)
+Purpose: This method handles the login process for users within the Brick Breaker Game.
 
 ---
