@@ -1,218 +1,190 @@
-# Brick Breaker Game
+### Authentication
 
-## Introduction
+- **AuthenticationSystem** (Manages user authentication, registration, and file I/O)
 
-This repository showcases a Java implementation of a Brick Breaker Game. The game involves breaking bricks with a bouncing ball controlled by a paddle. It incorporates user registration, login, and authentication functionalities to access the game.
+### Player
 
-## Overview
+- **Game** (Facilitates user interactions and game flow)
+- **Gameplay** (Handles gameplay functionality and user actions)
+- **MapGenerator** (Generates maps for the gameplay)
+- **User** (Represents regular users and handles authentication)
 
-The Brick Breaker Game is a Java-based project featuring key components such as user authentication, dynamic gameplay mechanics, and a customizable map generator. With the inheritance of user roles, robust exception handling, and an engaging user interface, this project encapsulates the essence of a classic arcade game while integrating modern programming concepts.
+### Admin
 
-## Table of Contents
-  - [Introduction](#introduction)
-  - [Overview](#overview)
-  - [Table of Contents](#table-of-contents)
-  - [Features](#features)
-    - [Authentication System](#authentication-system)
-    - [Dynamic Gameplay](#dynamic-gameplay)
-    - [Map Generator](#map-generator)
-    - [User Roles](#user-roles)
-  - [Classes \& Objects](#classes--objects)
-    - [Classes](#classes)
-    - [Objects](#objects)
-  - [Inheritance:](#inheritance)
-    - [Superclass \& Subclass:](#superclass--subclass)
-  - [Constructor](#constructor)
-  - [Overloading Method](#overloading-method)
-    - [getUserInfo() Method (User Class)](#getuserinfo-method-user-class)
-  - [Overriding Method](#overriding-method)
-  - [Polymorphism](#polymorphism)
-  - [Encapsulation](#encapsulation)
-    - [Private \& Protected](#private--protected)
-  - [Abstraction](#abstraction)
-  - [Exception Handling](#exception-handling)
-    - [Exception Handling Usage](#exception-handling-usage)
-  - [File I/O](#file-io)
-    - [File I/O Implementation](#file-io-implementation)
-  - [Functional Interface/Lambda Expression](#functional-interfacelambda-expression)
-  - [Static Method](#static-method)
+- **Admin** (Represents admin users with extended privileges)
 
----
+## Object-Oriented Programming (OOP) Concepts
 
-## Features
+### Classes & Objects
 
-### Authentication System
+#### Classes
 
-- Manage user registration, login, and secure authentication.
+- Classes, such as `Game`, `AuthenticationSystem`, `Admin`, `User`, etc., define the structure for objects in the system.
+- Each class represents a different part or functionality in the brick breaker game system.
 
-### Dynamic Gameplay
+#### Class Overview
 
-- Experience interactive gameplay with a bouncing ball, a paddle, and an array of breakable bricks.
+**Admin Class**
 
-### Map Generator
+- Represents admin users with extended privileges.
 
-- Generate diverse brick layouts, adding variety and challenge to the gameplay.
+**AuthenticationSystem Class**
 
-### User Roles
+- Manages user authentication, registration, and file I/O.
 
-- Introduce user roles with Admin functionalities, extending the gaming experience.
+**Game Class**
 
+- Facilitates user interactions and game flow.
 
-## Classes & Objects
+**Gameplay Class**
 
-### Classes
+- Handles gameplay functionality and user actions.
 
-1. **Game.java**
-   - Manages user registration, login, and gameplay initiation.
+**MapGenerator Class**
 
-2. **Gameplay.java**
-   - Represents the gameplay screen and controls game mechanics.
+- Generates maps for the gameplay.
 
-3. **AuthenticationSystem**
-   - Handles user authentication, registration, and data storage.
+**User Class**
 
-4. **MapGenerator**
-   - Generates the game's brick layouts and renders them on the screen.
+- Represents regular users and handles authentication.
 
-5. **User & Admin**
-   - Base and specialized classes for managing user information and roles.
+#### Objects
 
-### Objects
+- Objects are instances of these classes. For example, an instance of the `Game` class is created in the main method.
 
-- Creating an AuthenticationSystem object to handle user authentication and data management 
-    - `AuthenticationSystem authSystem = new AuthenticationSystem();`
-- The gameplay object lies in initiating the gameplay session for a user who has successfully logged in.    
-    - `Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);`
-- Creates a User instance by initializing it with a provided username and password, used for representing and managing user-related information in the game.
-    - `User user = new User(userInfo[0], userInfo[1]);`
+### Inheritance
 
----
+- Inheritance creates a hierarchy of classes.
+- `Admin` and `User` share common attributes and methods defined in the `User` class.
+- `OperationManager` and `OperationSeller` inherit common behavior from the `Operation` class.
+### Inheritance Structure
 
-## Inheritance:
+**User Class:**
 
-### Superclass & Subclass:
+- Base class for regular users and administrators.
+- Manages user attributes, authentication, and gameplay-related functionality.
 
-- **Superclass:** `User`
-   - In our project we have one superclass, the `User` is the superclass and the the `Admin` class is a subclass that inherits from the User superclass.
-   - Superclass: User is the base class, defining common properties and behaviors for all users. 
-   - Subclass: Admin extends User, inheriting its attributes and methods while adding specific features for admin users.
+**Admin Class:**
 
-## Constructor
+- Inherits from User with specialized methods.
+- Overrides performSpecialAction for administrators.
 
-Constructors are present in classes like AuthenticationSystem, Gameplay, and others, initializing necessary components during object creation
+#### Code Example
 
-**Gameplay Class Constructor:**
-   - Parameters: `int isAdmin, String username, String password`
-   - Purpose: Initializes a Gameplay object.
+```java
+// Inheritance
+public class Admin extends User {
+// ...
+}
 
-**User Class Constructor:**
-   - Parameters: `String username, String password`
-   - Purpose: Initializes a User object.
+public class OperationManager extends Operation {...}
 
-**Admin Class Constructor:**
-   - Parameters: `String username, String password`
-   - Purpose: Initializes an Admin object.
+```
+### Polymorphism
 
----
-    
-## Overloading Method
+#### Casting
 
-### getUserInfo() Method (User Class)
+- **Demonstration:** Polymorphism is demonstrated through casting, enabling a more specific type to be treated as its base type.
+- **Usage:**
+    - Casting is employed to handle both regular users and administrators uniformly, treating them as generic users.
+    - Instances are cast when dealing with different user types, allowing specific actions based on their actual roles.
 
-- Overloads:
-  - `String getUserInfo()`
-  - `String getUserInfo(boolean onlyUsername)`
-  - The first getUserInfo() method returns the concatenated string of username and password.
-  - The second getUserInfo(boolean onlyUsername) method returns only the username.
+```java
+// Casting Example in AuthenticationSystem Class
+User retrievedUser = loginInfo.get(username);
+if (retrievedUser instanceof Admin) {
+    Admin adminUser = (Admin) retrievedUser;
+    // Perform admin-specific actions
+} else {
+    // Perform regular user actions
+}
+```
+### Encapsulation
 
+**Access Modifiers:**
 
----
+- **public:**
+    - Accessible from any class.
+    - Used for methods that need to be accessible externally.
+    ```java
+    // Public method in User class
+    public int getLives() {
+        return lives;
+    }
+    ```
+- **private:**
+    - Accessible only within the same class.
+    - Used for fields and methods that should not be modified externally.
+    ```java
+    // Private fields and method in User class
+    private String username;
+    private void performSpecialAction() {
+        // Implementation
+    }
+    ```
+- **protected:**
+    - Accessible within the same package and by subclasses.
+    - Used for methods that are intended for internal use within the package or by subclasses.
+    ```java
+    // Protected method in Gameplay class
+    protected void keyPressed(KeyEvent e) {
+        // Implementation
+    }
+    ```
 
-## Overriding Method
 
-- In this case, the ‘performSpecialAction()’ method in the Admin class overrides the method with the same signature in the User class. The @Override annotation indicates that this method is intentionally overriding the superclass's method.
+### Abstraction
 
-Method in User class:
+#### Abstract Class & Method
 
-- `public void performSpecialAction() {
-    JOptionPane.showMessageDialog(null, "Normal User have login. " + getUserInfo(true));
-}`
+- Abstract class `Operation` and its abstract method `runOperation()`.
 
-Method in Admin class (overrides performSpecialAction() from User class):
+#### Explanation
 
-@Override
-- `public void performSpecialAction() {
-    JOptionPane.showMessageDialog(null, "Admin User have special privileges. " + getUserInfo(true));
-}`
+- The `Operation` class is abstract, preventing direct instantiation.
+- The abstract method `runOperation()` enforces implementation in subclasses.
 
----
+### Exception Handling
 
-## Polymorphism
-- Explanation: When you have a reference to the superclass (User class) that points to an object of the subclass (Admin class) and you call the performSpecialAction() method through this reference, the method in the Admin class will be executed instead of the one in the User class.
-- Purpose: This feature allows different behavior to be exhibited based on the actual type of the object, showing different behaviors for User and Admin instances while using a common method name.
+#### Handling Exceptions
 
-## Encapsulation
+- Handling `IOException` in file I/O operations.
+- Handling `NumberFormatException` for input validation.
 
-### Private & Protected
+#### Explanation
 
-- `private String username;` Field like username is marked as private. This ensures that these details are only manipulated within the respective classes.
-- When to Use: Use private for fields and methods that should only be accessed within the same class. It provides the highest level of encapsulation, restricting direct access from external classes.
-- Can be found in Admin.java, AuthenticationSystem.java, Gameplay.java and MapGenerator.java 
+- Exception handling is incorporated to gracefully manage unexpected errors.
+- `IOException` is caught when reading/writing to files.
+- `NumberFormatException` is caught for input validation.
 
-- `protected int lives;` The protected modifier is used for the lives field in the User class. This allows subclasses like Admin to access and manipulate the lives field.
-- When to Use: Use protected for fields and methods that should be accessible within the same package and by subclasses (including those in different packages). It allows a controlled level of access for subclasses, promoting inheritance.
-- Can be found in User.java
+### File I/O
 
----
+#### Reading/Writing to Files
 
-## Abstraction
+- Operations involving files like `Book.txt`, `Customer.txt`.
 
-In the `MapGenerator.java` file, we declared a MapDrawable interface contains two abstract methods:
-- `void draw(Graphics2D g)` - This method is used to draw on the map. It takes a Graphics2D object as a parameter and defines the behavior to draw on the map using the Graphics2D API.
+#### Explanation
 
-- `void setBrickValue(int value, int row, int col)` - This method is responsible for setting the value of a brick on the map. It takes three parameters: value (the value to set for the brick), row (the row number where the brick is located), and col (the column number where the brick is located).
+- Files are used to store and retrieve specific data related to books, customers, etc.
 
----
+### Lambda Expression
 
-## Exception Handling
+#### Lambda Expressions
 
-### Exception Handling Usage
+- Loading and saving users using lambda expressions.
 
-- Exception Handling: It is the process of handling runtime errors or exceptional situations that might occur during program execution.
-- Exception handling is implemented using try-catch blocks, for instance, in the ‘Game’ class when handling InputMismatchException or general exceptions when user input invalid choices.
+#### Explanation
 
----
+- Lambda expressions are used for concise implementations of functional interfaces.
+- In the code, lambda expressions are used to load and save users from/to files.
 
-## File I/O
+### Static Method
 
-### File I/O Implementation
+#### Static Methods
 
-- We have implemented ‘users.txt’ file I/O to save the user’s information during the authentication. The file is also being used during the authentication process to check user login information. 
+- Methods like `getManager()` and `getSeller()`.
 
----
+#### Explanation
 
-## Functional Interface/Lambda Expression
-
-- The AuthenticationInterface is a functional interface since it has only one abstract method ‘saveAndLoadUsers()’.
-- Lambda expressions are used to provide implementations for loading and saving users to/from a file. 
-- `AuthenticationInterface loadUsers =()->{};` and `AuthenticationInterface saveUsers =()->{};` 
-
----
-## Static Method
-
-initializeGame()
-
-- Static Method: It belongs to the class and not to the instances (objects) of the class. They can be called without creating an instance of the class.
-- ‘initializeGame()’ is declared as a static method. Static methods belong to the class rather than to any specific instance of the class. They can be called using the class name itself ‘(Gameplay.initializeGame())’, without needing to create an object of the class.
-
-registerUser():
-
-- Signature: private static void registerUser(AuthenticationSystem authSystem, Scanner scanner)
-- Purpose: This method handles the registration of new users within the Brick Breaker Game.
-
-loginUser():
-
-- Signature: private static void loginUser(AuthenticationSystem authSystem, Scanner scanner)
-- Purpose: This method handles the login process for users within the Brick Breaker Game.
-
----
+- Static methods provide functionality without needing an instance of the class.
+- Examples like `getManager()` and `getSeller()` offer access without creating an object.
