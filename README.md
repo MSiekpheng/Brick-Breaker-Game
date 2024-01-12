@@ -135,56 +135,105 @@ if (retrievedUser instanceof Admin) {
 
 ### Abstraction
 
-#### Abstract Class & Method
+**Abstract Classes:**
 
-- Abstract class `Operation` and its abstract method `runOperation()`.
+- **Purpose:**
+    - Define a blueprint for classes with shared functionality.
+    - Cannot be instantiated directly, but serve as a base for subclasses.
+    ```java
+    // Abstract class in AuthenticationSystem.java
+    abstract class AuthenticationInterface {
+        abstract void saveAndLoadUsers(); // Abstract method
+    }
+    ```
 
-#### Explanation
+**Abstract Methods:**
 
-- The `Operation` class is abstract, preventing direct instantiation.
-- The abstract method `runOperation()` enforces implementation in subclasses.
+- **Purpose:**
+    - Declared in abstract classes without implementation.
+    - Enforce implementation in subclasses.
+
+    ```java
+    // Abstract method in AuthenticationInterface
+    abstract void saveAndLoadUsers();
 
 ### Exception Handling
 
-#### Handling Exceptions
+**Types of Exceptions Handled:**
 
-- Handling `IOException` in file I/O operations.
-- Handling `NumberFormatException` for input validation.
+- **File Not Found (IOException):**
+    - **Purpose:**
+        - Handles situations where the specified file path is incorrect or the file is not found.
+        - Prevents the application from crashing and provides an error message.
+    - **Example:**
+        ```java
+        // Exception handling for file not found in AuthenticationSystem.java
+        try (Scanner fileScanner = new Scanner(filePath.toFile())) {
+            // Read data from the file
+        } catch (IOException e) {
+            System.err.println("Error loading users from file: " + e.getMessage());
+        }
+        ```
 
-#### Explanation
+- **Wrong Input Data Type (NumberFormatException):**
+    - **Purpose:**
+        - Catches errors when users enter non-numeric data that needs to be converted to a number.
+        - Informs users of the mistake, clears input fields, and avoids program crashes.
+    - **Example:**
+        ```java
+        // Exception handling for wrong input data type in Gameplay.java
+        try {
+            int tmpID = Integer.parseInt(idField.getText());
+            // Process user input
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(frame, "Wrong input data type. Please try again.");
+            // Handle the exception by displaying an error message and clearing the input fields
+        }
+        ```
 
-- Exception handling is incorporated to gracefully manage unexpected errors.
-- `IOException` is caught when reading/writing to files.
-- `NumberFormatException` is caught for input validation.
+# File I/O
 
-### File I/O
+**Files Used:**
 
-#### Reading/Writing to Files
-
-- Operations involving files like `Book.txt`, `Customer.txt`.
-
-#### Explanation
-
-- Files are used to store and retrieve specific data related to books, customers, etc.
-
+- **users.txt:**
+    - **Purpose:** Stores user data, including usernames, passwords, and admin status.
+    - **Format:** Each line represents a user with the format: `username:password:adminStatus`.
+    - **Benefits:**
+        - *Simplifies user data management by consolidating information into a single file.*
+        - *Facilitates easy access and modification of user data.*
 ### Lambda Expression
 
-#### Lambda Expressions
+## Lambda Expressions
 
-- Loading and saving users using lambda expressions.
+**Purpose:**
 
-#### Explanation
+- Enhance code readability and functionality by providing a concise way to define functions.
 
-- Lambda expressions are used for concise implementations of functional interfaces.
-- In the code, lambda expressions are used to load and save users from/to files.
+**Examples:**
 
-### Static Method
+**Filter Operation:**
 
-#### Static Methods
+- Used to select specific elements from a collection based on a condition.
 
-- Methods like `getManager()` and `getSeller()`.
+```java
+List<User> adminUsers = userList.stream()
+        .filter(user -> user instanceof Admin)
+        .collect(Collectors.toList());
+```
 
-#### Explanation
+## Static Methods
 
-- Static methods provide functionality without needing an instance of the class.
-- Examples like `getManager()` and `getSeller()` offer access without creating an object.
+**Purpose:**
+
+- Provide functionality that can be accessed without creating objects of a class.
+
+**Examples:**
+
+**AuthenticationSystem Class:**
+
+- **`authenticateUser` method:**
+    - Checks user credentials to authenticate them.
+    - Accessible without creating an instance of the class.
+
+```java
+public static int authenticateUser(String username, String password)
