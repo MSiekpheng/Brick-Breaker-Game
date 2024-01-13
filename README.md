@@ -1,3 +1,21 @@
+# Brick-Breaker-Game 
+
+## Table of Content
+- [Introduction](#introduction)
+- [Classes & Objects](#classes--objects)
+- [Inheritance](#inheritance)
+- [Polymorphism](#polymorphism)
+- [Encapsulation](#encapsulation)
+- [Abstraction](#abstraction)
+- [Exception Handling](#exception-handling)
+- [File I/O](#file-io)
+- [Lambda Expressions](#lambda-expression)
+- [Static Methods](#static-methods)
+
+## Introduction
+
+This repository features a Java implementation of a Brick Breaker Game. The game involves breaking bricks with a bouncing ball controlled by a paddle. We also include registration and authentication where user need to log in in order to access the Brick Breaker Game. Below is a breakdown of the key components and features of the project.
+
 ### Authentication
 
 - **AuthenticationSystem** (Manages user authentication, registration, and file I/O)
