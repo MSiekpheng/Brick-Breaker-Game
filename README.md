@@ -68,7 +68,12 @@ Classes define the blueprint for creating objects, encapsulating data and behavi
 
 #### Objects
 Objects are instances of classes, representing real-world entities and encapsulating their state and behavior.
-- Objects are instances of these classes. For example, an instance of the `Game` class is created in the main method.
+- Creating an AuthenticationSystem object to handle user authentication and data management 
+    - `AuthenticationSystem authSystem = new AuthenticationSystem();`
+- The gameplay object lies in initiating the gameplay session for a user who has successfully logged in.    
+    - `Gameplay gamePlay = new Gameplay(loginStatus, loginUsername, loginPassword);`
+- Creates a User instance by initializing it with a provided username and password, used for representing and managing user-related information in the game.
+    - `User user = new User(userInfo[0], userInfo[1]);`
 
 ### Inheritance
 Inheritance allows a class (subclass) to inherit attributes and methods from another class, facilitating code reuse and creating a hierarchy of related classes.
@@ -86,8 +91,6 @@ Inheritance allows a class (subclass) to inherit attributes and methods from ano
 
 - Inherits from User with specialized methods.
 - Overrides performSpecialAction for administrators.
-
-#### Code Example
 
 ```java
 // Inheritance
@@ -227,7 +230,7 @@ Lambda expressions introduce a concise way to write anonymous functions, enhanci
 
 - Enhance code readability and functionality by providing a concise way to define functions.
 
-**Examples:**
+**Example:**
 
 **Filter Operation:**
 
@@ -245,7 +248,7 @@ Static methods belong to a class rather than an instance, providing utility func
 
 - Provide functionality that can be accessed without creating objects of a class.
 
-**Examples:**
+**Example:**
 
 **AuthenticationSystem Class:**
 
