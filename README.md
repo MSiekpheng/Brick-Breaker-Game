@@ -18,7 +18,7 @@
 ### Classes & Objects
 
 #### Classes
-
+Classes define the blueprint for creating objects, encapsulating data and behavior into a single unit.
 - Classes, such as `Game`, `AuthenticationSystem`, `Admin`, `User`, etc., define the structure for objects in the system.
 - Each class represents a different part or functionality in the brick breaker game system.
 
@@ -49,11 +49,11 @@
 - Represents regular users and handles authentication.
 
 #### Objects
-
+Objects are instances of classes, representing real-world entities and encapsulating their state and behavior.
 - Objects are instances of these classes. For example, an instance of the `Game` class is created in the main method.
 
 ### Inheritance
-
+Inheritance allows a class (subclass) to inherit attributes and methods from another class, facilitating code reuse and creating a hierarchy of related classes.
 - Inheritance creates a hierarchy of classes.
 - `Admin` and `User` share common attributes and methods defined in the `User` class.
 - `OperationManager` and `OperationSeller` inherit common behavior from the `Operation` class.
@@ -81,7 +81,7 @@ public class OperationManager extends Operation {...}
 
 ```
 ### Polymorphism
-
+Polymorphism enables objects to take on multiple forms, allowing them to be treated as instances of their parent class while exhibiting specific behaviors of their own.
 #### Casting
 
 - **Demonstration:** Polymorphism is demonstrated through casting, enabling a more specific type to be treated as its base type.
@@ -100,7 +100,7 @@ if (retrievedUser instanceof Admin) {
 }
 ```
 ### Encapsulation
-
+Encapsulation bundles the data (attributes) and methods that operate on the data into a single unit, protecting the internal state of an object and promoting modularity.
 **Access Modifiers:**
 
 - **public:**
@@ -134,7 +134,7 @@ if (retrievedUser instanceof Admin) {
 
 
 ### Abstraction
-
+Abstraction involves creating abstract classes or interfaces that define a common structure for derived classes, emphasizing essential features while hiding implementation details.
 **Abstract Classes:**
 
 - **Purpose:**
@@ -158,7 +158,7 @@ if (retrievedUser instanceof Admin) {
     abstract void saveAndLoadUsers();
 
 ### Exception Handling
-
+Exception handling deals with runtime errors, providing mechanisms to gracefully handle and recover from unexpected situations, preventing program crashes.
 **Types of Exceptions Handled:**
 
 - **File Not Found (IOException):**
@@ -191,7 +191,8 @@ if (retrievedUser instanceof Admin) {
         }
         ```
 
-# File I/O
+### File I/O
+File I/O in Java involves reading from and writing to files, enabling the interaction between a program and external storage. This concept allows data to be persisted, retrieved, and manipulated, enhancing the functionality and data management capabilities of Java applications.
 
 **Files Used:**
 
@@ -202,8 +203,7 @@ if (retrievedUser instanceof Admin) {
         - *Simplifies user data management by consolidating information into a single file.*
         - *Facilitates easy access and modification of user data.*
 ### Lambda Expression
-
-## Lambda Expressions
+Lambda expressions introduce a concise way to write anonymous functions, enhancing code readability and supporting functional programming constructs.
 
 **Purpose:**
 
@@ -221,8 +221,8 @@ List<User> adminUsers = userList.stream()
         .collect(Collectors.toList());
 ```
 
-## Static Methods
-
+### Static Methods
+Static methods belong to a class rather than an instance, providing utility functions or operations that don't rely on the state of an object and can be called directly on the class.
 **Purpose:**
 
 - Provide functionality that can be accessed without creating objects of a class.
